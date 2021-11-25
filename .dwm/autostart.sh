@@ -7,7 +7,7 @@ picom &
 ~/.fehbg
 xset r rate 300 30
 dunst &
-mopidy &
+exec mopidy &
 
 exec ~/.config/PHDWM/.dwm/bar/./bar.sh &
 exec dwm

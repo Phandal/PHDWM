@@ -1,10 +1,13 @@
 #!/bin/bash
 
+pkill -x bar.sh
+pkill -x mopidy
+
 picom &
 ~/.fehbg
 xset r rate 300 30
 dunst &
+mopidy &
 
-pkill -x bar.sh
 exec ~/.config/PHDWM/.dwm/bar/./bar.sh &
 exec dwm

@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
@@ -88,8 +90,13 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_white, "-sb", col_cyan, "-sf", col_white, NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+/* Custom Commands */
 static const char *firefoxcmd[] = { "firefox", NULL };
-static const char *roficmd[] = {"rofi", "-show", "run", NULL };
+static const char *roficmd[] = { "rofi", "-show", "run", NULL };
+static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
+static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
+static const char *mutevolcmd[] = { "pamixer", "-t", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -126,9 +133,13 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-
+  
+  /* Custom Keybinds */
 	{ MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
   { MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
+	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = upvolcmd } },
+	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = downvolcmd } },
+	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = mutevolcmd } },
 };
 
 /* button definitions */

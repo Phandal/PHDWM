@@ -8,8 +8,25 @@ interval=0
 cpu() {
 	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
-	printf "^c$black^ ^b$green^  CPU"
+	printf "^c$black^ ^b$orange^  CPU"
 	printf "^c$white^ ^b$grey^ $cpu_val"
+}
+
+sound() {
+  volume=$(pamixer --get-volume-human)
+  muted=${volume::-1}
+  if [ "$muted" == "mute" ]; then
+    printf "^c$black^ ^b$red^ 婢 VOL"
+  else
+    if [ "$muted" -lt "25" ]; then
+      printf "^c$black^ ^b$green^ 奄 VOL"
+    elif [ "$muted" -lt "50" ]; then
+      printf "^c$black^ ^b$green^ 奔 VOL"
+    else
+      printf "^c$black^ ^b$green^ 墳 VOL"
+    fi
+  fi
+  printf "^c$white^ ^b$grey^ %s" "$volume"
 }
 
 pkg_updates() {
@@ -23,13 +40,13 @@ pkg_updates() {
 }
 
 mem() {
-	printf "^c$black^ ^b$red^  MEM"
+	printf "^c$black^ ^b$pink^  MEM"
 	printf "^c$white^ ^b$grey^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 wlan() {
   printf "^c$black^ ^b$yellow^  ETH";
-	case "$(cat /sys/class/net/eth*/operstate 2>/dev/null)" in
+	case "$(cat /sys/class/net/en*/operstate 2>/dev/null)" in
 	up) printf "^c$white^ ^b$grey^ Connected";;
 	down) printf "^c$white^ ^b$grey^ Disconnected";;
 	esac
@@ -46,5 +63,5 @@ while true; do
 	interval=$((interval + 1))
 
 	#sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$updates $(wlan) $(cpu) $(mem) $(clock)"
+  sleep 1 && xsetroot -name "$updates $(wlan) $(cpu) $(mem) $(sound) $(clock)"
 done

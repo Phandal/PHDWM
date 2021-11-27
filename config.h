@@ -88,11 +88,12 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_white, "-sb", col_cyan, "-sf", col_white, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *firefox[] = { "firefox", NULL };
+static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *roficmd[] = {"rofi", "-show", "run", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -126,7 +127,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
-	{ MODKEY,                       XK_b,      spawn,          {.v = firefox } },
+	{ MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
+  { MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 };
 
 /* button definitions */

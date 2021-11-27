@@ -18,7 +18,7 @@ pkg_updates() {
 	if [ "$updates" == "0" ]; then
 		printf "^c$green^  Fully Updated"
 	else
-		printf "^c$green^  $updates"" updates"
+		printf "^c$red^  $updates"" updates"
 	fi
 }
 
@@ -29,7 +29,7 @@ mem() {
 
 wlan() {
   printf "^c$black^ ^b$yellow^  ETH";
-	case "$(cat /sys/class/net/eth0/operstate 2>/dev/null)" in
+	case "$(cat /sys/class/net/eth*/operstate 2>/dev/null)" in
 	up) printf "^c$white^ ^b$grey^ Connected";;
 	down) printf "^c$white^ ^b$grey^ Disconnected";;
 	esac

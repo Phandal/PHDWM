@@ -6,6 +6,8 @@ static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 0;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "Fira Code:size=10" };
 static const char dmenufont[]       = "Fira Code:size=10";
 static const char col_gray1[]       = "#2E3440";
@@ -21,12 +23,19 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"st", NULL,
+	"picom", NULL,
+	"/home/bailey/.fehbg", NULL,
+	"xset", "r", "rate", "300", "30", NULL,
+	"dunst", NULL,
+	"mopidy", NULL,
+	"/home/bailey/.config/PHDWM/bar/bar.sh", NULL,
+	"mopidy", NULL,
+  "redshift", NULL,
 	NULL /* terminate */
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "", "", "", "ﭮ", "" };
 
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
@@ -39,10 +48,6 @@ static const char *tagsel[][2] = {
 	{ "#D08770", "#2E3440" },
 	{ "#EBCB8B", "#2E3440" },
 	{ "#A3BE8C", "#2E3440" },
-	{ "#B48EAD", "#2E3440" },
-	{ "#ffffff", "#9400d3" },
-	{ "#000000", "#ffffff" },
-	{ "#ffffff", "#000000" },
 };
 
 static const Rule rules[] = {
@@ -63,9 +68,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "Tile",      tile },    /* first entry is default */
-	{ "Float",      NULL },    /* no layout function means floating behavior */
-	{ "Moncl",      monocle },
+	{ "T",      tile },    /* first entry is default */
+	{ "F",      NULL },    /* no layout function means floating behavior */
+	{ "M",      monocle },
 };
 
 /* key definitions */

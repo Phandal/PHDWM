@@ -20,8 +20,20 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_white, col_cyan,  col_cyan  },
 };
 
+static const char *const autostart[] = {
+	"picom", NULL,
+	"/home/bailey/.fehbg", NULL,
+	"xset", "r", "rate", "300", "30", NULL,
+	"dunst", NULL,
+	"mopidy", NULL,
+	"/home/bailey/.config/PHDWM/bar/bar.sh", NULL,
+	"mopidy", NULL,
+  "redshift", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "", "", "", "ﭮ", "" };
 
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
@@ -34,10 +46,6 @@ static const char *tagsel[][2] = {
 	{ "#D08770", "#2E3440" },
 	{ "#EBCB8B", "#2E3440" },
 	{ "#A3BE8C", "#2E3440" },
-	{ "#B48EAD", "#2E3440" },
-	{ "#ffffff", "#9400d3" },
-	{ "#000000", "#ffffff" },
-	{ "#ffffff", "#000000" },
 };
 
 static const Rule rules[] = {

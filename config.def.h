@@ -20,6 +20,11 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_white, col_cyan,  col_cyan  },
 };
 
+static const char *const autostart[] = {
+	"st", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5" };
 
@@ -29,12 +34,12 @@ static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the b
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 static const char *tagsel[][2] = {
-	{ "#ffffff", "#ff0000" },
-	{ "#ffffff", "#ff7f00" },
-	{ "#000000", "#ffff00" },
-	{ "#000000", "#00ff00" },
-	{ "#ffffff", "#0000ff" },
-	{ "#ffffff", "#4b0082" },
+	{ "#5E81AC", "#2E3440" },
+	{ "#BF616A", "#2E3440" },
+	{ "#D08770", "#2E3440" },
+	{ "#EBCB8B", "#2E3440" },
+	{ "#A3BE8C", "#2E3440" },
+	{ "#B48EAD", "#2E3440" },
 	{ "#ffffff", "#9400d3" },
 	{ "#000000", "#ffffff" },
 	{ "#ffffff", "#000000" },

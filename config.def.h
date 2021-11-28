@@ -1,13 +1,15 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 0;        /* vertical padding for statusbar */
+static const int horizpadbar        = 5;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 11;       /* vertical padding for statusbar */
 static const char *fonts[]          = { "Fira Code:size=10" };
 static const char dmenufont[]       = "Fira Code:size=10";
 static const char col_gray1[]       = "#2E3440";
@@ -23,6 +25,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
+  "unclutter", NULL,
 	"picom", NULL,
 	"/home/bailey/.fehbg", NULL,
 	"xset", "r", "rate", "300", "30", NULL,
@@ -88,13 +91,21 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_white, "-sb", col_cyan, "-sf", col_white, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *firefox[] = { "firefox", NULL };
+
+/* Custom Commands */
+static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *roficmd[] = { "rofi", "-show", "run", NULL };
+static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
+static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
+static const char *mutevolcmd[] = { "pamixer", "-t", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
+	/*{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },*/
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -125,8 +136,13 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-
-	{ MODKEY,                       XK_b,      spawn,          {.v = firefox } },
+  
+  /* Custom Keybinds */
+	{ MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
+  { MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
+	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = upvolcmd } },
+	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = downvolcmd } },
+	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = mutevolcmd } },
 };
 
 /* button definitions */

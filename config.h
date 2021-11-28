@@ -25,6 +25,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
+  "unclutter", NULL,
 	"picom", NULL,
 	"/home/bailey/.fehbg", NULL,
 	"xset", "r", "rate", "300", "30", NULL,
@@ -100,7 +101,7 @@ static const char *mutevolcmd[] = { "pamixer", "-t", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	/*{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },*/
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

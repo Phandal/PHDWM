@@ -96,7 +96,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* Custom Commands */
 static const char *firefoxcmd[] = { "firefox", NULL };
-static const char *roficmd[] = { "rofi", "-show", "run", NULL };
+static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
 static const char *mutevolcmd[] = { "pamixer", "-t", NULL };

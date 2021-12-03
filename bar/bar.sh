@@ -57,11 +57,22 @@ clock() {
 	printf "^c$white^ ^b$grey^ $(date '+%I:%M %p') "
 }
 
+song() {
+  playing=$(playerctl status)
+  if [ "$playing" != "Playing" ]; then
+    cur_song="Nothing Playing"
+  else
+    cur_song=$(playerctl metadata --format '{{title}} | {{artist}}')
+  fi
+  printf "^c$black^ ^b$blue^  SONG"
+  printf "^c$white^ ^b$grey^ $cur_song"
+}
+
 while true; do
 
 	[ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
 
 	#sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$updates $(wlan) $(cpu) $(mem) $(sound) $(clock)"
+  sleep 1 && xsetroot -name "$updates $(song) $(wlan) $(cpu) $(mem) $(sound) $(clock)"
 done

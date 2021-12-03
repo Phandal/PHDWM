@@ -100,6 +100,10 @@ static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
 static const char *mutevolcmd[] = { "pamixer", "-t", NULL };
+static const char *nextsongcmd[] = { "playerctl", "next", NULL };
+static const char *prevsongcmd[] = { "playerctl", "previous", NULL };
+static const char *togglesongcmd[] = { "playerctl", "play-pause", NULL };
+//static const char *prtsccmd[] = { "maim", "~/Downloads/screenshot.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -146,6 +150,10 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = upvolcmd } },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = downvolcmd } },
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = mutevolcmd } },
+	{ 0,                            XF86XK_AudioNext,          spawn,          {.v = nextsongcmd } },
+	{ 0,                            XF86XK_AudioPrev,          spawn,          {.v = prevsongcmd } },
+	{ 0,                            XF86XK_AudioPlay,          spawn,          {.v = togglesongcmd } },
+	//{ 0,                            XK_Print,                  spawn,          {.v = prtsccmd } },
 };
 
 /* button definitions */

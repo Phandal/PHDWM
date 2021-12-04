@@ -34,6 +34,7 @@ static const char *const autostart[] = {
 	"/home/bailey/.config/PHDWM/bar/bar.sh", NULL,
 	"mopidy", NULL,
   "redshift", NULL,
+  "xrandr", "--auto", "--output", "HDMI-3", "--right-of", "DVI-0", NULL,
 	NULL /* terminate */
 };
 

@@ -64,7 +64,7 @@ song() {
   else
     cur_song=$(playerctl metadata --format '{{title}} | {{artist}}')
   fi
-  printf "^c$black^ ^b$blue^  SONG"
+  printf "^c$black^ ^b$frost^  SONG"
   printf "^c$white^ ^b$black^ $cur_song"
 }
 

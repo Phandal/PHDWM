@@ -18,10 +18,11 @@ static const char col_gray3[]       = "#434C5E";
 static const char col_white[]       = "#D8DEE9";
 static const char col_gray4[]       = "#4C566A";
 static const char col_cyan[]        = "#5E81AC";
+static const char col_frost[]       = "#8FBCBB";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_white, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_white, col_gray1, col_gray1 },
+	[SchemeSel]  = { col_white, col_cyan,  col_frost  },
 };
 
 static const char *const autostart[] = {

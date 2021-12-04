@@ -1,0 +1,26 @@
+#!/bin/bash
+
+OPTIONS="Logout\nSuspend\nReboot\nShutdown"
+
+option=`echo -e $OPTIONS | rofi -dmenu -i -l 4 -p  | awk '{print $1}' | tr -d '\r\n'`
+
+if [ ${#option} -gt 0 ]
+then
+  case $option in
+    Logout)
+      loginctl terminate-session ${XDG_SESSION_ID}
+      ;;
+    Suspend)
+      slock systemctl suspend -i
+      ;;
+    Reboot)
+      systemctl reboot
+      ;;
+    Shutdown)
+      systemctl poweroff
+      ;;
+    *)
+      ;;
+  esac
+fi
+

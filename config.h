@@ -35,7 +35,6 @@ static const char *const autostart[] = {
 	"/home/bailey/.config/PHDWM/bar/bar.sh", NULL,
 	"mopidy", NULL,
   "redshift", NULL,
-  "xrandr", "--auto", "--output", "HDMI-3", "--right-of", "DVI-0", NULL,
 	NULL /* terminate */
 };
 
@@ -97,7 +96,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 /* Custom Commands */
-static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *browsercmd[] = { "qutebrowser", NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
@@ -105,6 +104,8 @@ static const char *mutevolcmd[] = { "pamixer", "-t", NULL };
 static const char *nextsongcmd[] = { "playerctl", "next", NULL };
 static const char *prevsongcmd[] = { "playerctl", "previous", NULL };
 static const char *togglesongcmd[] = { "playerctl", "play-pause", NULL };
+static const char *sleepcmd[] = { "slock", "systemctl", "suspend", "-i", NULL };
+static const char *rofipowercmd[] = { "rofipower", NULL };
 //static const char *prtsccmd[] = { "maim", "~/Downloads/screenshot.png", NULL };
 
 static Key keys[] = {
@@ -147,8 +148,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
   
   /* Custom Keybinds */
-	{ MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
+	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = sleepcmd } },
   { MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
+	{ MODKEY,                       XK_q,      spawn,          {.v = rofipowercmd } },
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = upvolcmd } },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = downvolcmd } },
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = mutevolcmd } },

@@ -9,7 +9,7 @@ cpu() {
 	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
 	printf "^c$black^ ^b$orange^  CPU"
-	printf "^c$white^ ^b$grey^ $cpu_val"
+	printf "^c$white^ ^b$black^ $cpu_val"
 }
 
 sound() {
@@ -26,7 +26,7 @@ sound() {
       printf "^c$black^ ^b$green^ 墳 VOL"
     fi
   fi
-  printf "^c$white^ ^b$grey^ %s" "$volume"
+  printf "^c$white^ ^b$black^ %s" "$volume"
 }
 
 pkg_updates() {
@@ -41,20 +41,20 @@ pkg_updates() {
 
 mem() {
 	printf "^c$black^ ^b$pink^  MEM"
-	printf "^c$white^ ^b$grey^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+	printf "^c$white^ ^b$black^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 wlan() {
   printf "^c$black^ ^b$yellow^  ETH";
 	case "$(cat /sys/class/net/en*/operstate 2>/dev/null)" in
-	up) printf "^c$white^ ^b$grey^ Connected";;
-	down) printf "^c$white^ ^b$grey^ Disconnected";;
+	up) printf "^c$white^ ^b$black^ Connected";;
+	down) printf "^c$white^ ^b$black^ Disconnected";;
 	esac
 }
 
 clock() {
 	printf "^c$black^ ^b$blue^ "
-	printf "^c$white^ ^b$grey^ $(date '+%I:%M %p') "
+	printf "^c$white^ ^b$black^ $(date '+%I:%M %p') "
 }
 
 song() {
@@ -65,7 +65,7 @@ song() {
     cur_song=$(playerctl metadata --format '{{title}} | {{artist}}')
   fi
   printf "^c$black^ ^b$blue^  SONG"
-  printf "^c$white^ ^b$grey^ $cur_song"
+  printf "^c$white^ ^b$black^ $cur_song"
 }
 
 while true; do

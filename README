@@ -5,4 +5,6 @@ playerctl
 pamixer
 
 # things to change
-you need to change what you want to autostart inthe autostart array
+you need to change what you want to autostart in the autostart array
+
+# you need to cp rofipower to /usr/local/bin/

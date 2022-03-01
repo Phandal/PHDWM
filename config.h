@@ -12,6 +12,19 @@ static const int horizpadbar        = 5;        /* horizontal padding for status
 static const int vertpadbar         = 11;       /* vertical padding for statusbar */
 static const char *fonts[]          = { "Fira Code:size=10" };
 static const char dmenufont[]       = "Fira Code:size=10";
+// ### Nord ColorScheme
+// static const char col_gray1[]       = "#2E3440";
+// static const char col_gray2[]       = "#3B4252";
+// static const char col_gray3[]       = "#434C5E";
+// static const char col_white[]       = "#D8DEE9";
+// static const char col_gray4[]       = "#4C566A";
+// static const char col_cyan[]        = "#5E81AC";
+// static const char col_frost[]       = "#8FBCBB";
+// static const char *colors[][3]      = {
+// 	/*               fg         bg         border   */
+// 	[SchemeNorm] = { col_white, col_gray1, col_gray1 },
+// 	[SchemeSel]  = { col_white, col_cyan,  col_frost  },
+// };
 static const char col_gray1[]       = "#2E3440";
 static const char col_gray2[]       = "#3B4252";
 static const char col_gray3[]       = "#434C5E";

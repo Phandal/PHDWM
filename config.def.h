@@ -96,8 +96,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 /* Custom Commands */
-static const char *browsercmd[] = { "qutebrowser", NULL };
-static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
+static const char *browsercmd[] = { "chromium", NULL };
+static const char *roficmd[] = { "rofi", "-m", "-1", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
 static const char *mutevolcmd[] = { "pamixer", "-t", NULL };
@@ -106,7 +106,7 @@ static const char *prevsongcmd[] = { "playerctl", "previous", NULL };
 static const char *togglesongcmd[] = { "playerctl", "play-pause", NULL };
 static const char *sleepcmd[] = { "slock", "systemctl", "suspend", "-i", NULL };
 static const char *rofipowercmd[] = { "rofipower", NULL };
-//static const char *prtsccmd[] = { "maim", "~/Downloads/screenshot.png", NULL };
+static const char *prntsccmd[] = { "maim", "--select", "|", "xclip", "-sel", "clip", "-target", "image/png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -158,7 +158,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioNext,          spawn,          {.v = nextsongcmd } },
 	{ 0,                            XF86XK_AudioPrev,          spawn,          {.v = prevsongcmd } },
 	{ 0,                            XF86XK_AudioPlay,          spawn,          {.v = togglesongcmd } },
-	//{ 0,                            XK_Print,                  spawn,          {.v = prtsccmd } },
+	{ 0,                            XK_Print,                  spawn,          {.v = prntsccmd } },
 };
 
 /* button definitions */

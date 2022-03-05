@@ -10,32 +10,19 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 11;       /* vertical padding for statusbar */
-static const char *fonts[]          = { "Fira Code:size=10" };
-static const char dmenufont[]       = "Fira Code:size=10";
-// ### Nord ColorScheme
-// static const char col_gray1[]       = "#2E3440";
-// static const char col_gray2[]       = "#3B4252";
-// static const char col_gray3[]       = "#434C5E";
-// static const char col_white[]       = "#D8DEE9";
-// static const char col_gray4[]       = "#4C566A";
-// static const char col_cyan[]        = "#5E81AC";
-// static const char col_frost[]       = "#8FBCBB";
-// static const char *colors[][3]      = {
-// 	/*               fg         bg         border   */
-// 	[SchemeNorm] = { col_white, col_gray1, col_gray1 },
-// 	[SchemeSel]  = { col_white, col_cyan,  col_frost  },
-// };
-static const char col_gray1[]       = "#2E3440";
-static const char col_gray2[]       = "#3B4252";
-static const char col_gray3[]       = "#434C5E";
-static const char col_white[]       = "#D8DEE9";
-static const char col_gray4[]       = "#4C566A";
-static const char col_cyan[]        = "#5E81AC";
-static const char col_frost[]       = "#8FBCBB";
+static const char *fonts[]          = { "CaskaydiaCove Nerd Font Mono:size=10" };
+static const char dmenufont[]       = "CaskaydiaCove Nerd Font Mono:size=10";
+static const char col_gray1[]       = "#EEE8D5";
+static const char col_gray2[]       = "#93A1A1";
+static const char col_gray3[]       = "#586E75";
+static const char col_white[]       = "#839496";
+static const char col_gray4[]       = "#657B83";
+static const char col_cyan[]        = "#2AA198";
+static const char col_frost[]       = "#93A1A1";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_white, col_gray1, col_gray1 },
-	[SchemeSel]  = { col_white, col_cyan,  col_frost  },
+	[SchemeSel]  = { col_white, col_cyan,  col_cyan  },
 };
 
 static const char *const autostart[] = {
@@ -60,11 +47,11 @@ static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the b
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 static const char *tagsel[][2] = {
-	{ "#5E81AC", "#2E3440" },
-	{ "#BF616A", "#2E3440" },
-	{ "#D08770", "#2E3440" },
-	{ "#EBCB8B", "#2E3440" },
-	{ "#A3BE8C", "#2E3440" },
+	{ "#2AA198", "#FDf6E3" },
+	{ "#DC322F", "#FDf6E3" },
+	{ "#CB4B16", "#FDf6E3" },
+	{ "#B58900", "#FDf6E3" },
+	{ "#859900", "#FDf6E3" },
 };
 
 static const Rule rules[] = {

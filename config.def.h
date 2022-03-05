@@ -10,17 +10,18 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 11;       /* vertical padding for statusbar */
-static const char *fonts[]          = { "Fira Code:size=10" };
-static const char dmenufont[]       = "Fira Code:size=10";
-static const char col_gray1[]       = "#2E3440";
-static const char col_gray2[]       = "#3B4252";
-static const char col_gray3[]       = "#434C5E";
-static const char col_white[]       = "#D8DEE9";
-static const char col_gray4[]       = "#4C566A";
-static const char col_cyan[]        = "#5E81AC";
+static const char *fonts[]          = { "CaskaydiaCove Nerd Font Mono:size=10" };
+static const char dmenufont[]       = "CaskaydiaCove Nerd Font Mono:size=10";
+static const char col_gray1[]       = "#EEE8D5";
+static const char col_gray2[]       = "#93A1A1";
+static const char col_gray3[]       = "#586E75";
+static const char col_white[]       = "#839496";
+static const char col_gray4[]       = "#657B83";
+static const char col_cyan[]        = "#2AA198";
+static const char col_frost[]       = "#93A1A1";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_gray1, col_gray2 },
+	[SchemeNorm] = { col_white, col_gray1, col_gray1 },
 	[SchemeSel]  = { col_white, col_cyan,  col_cyan  },
 };
 
@@ -46,11 +47,11 @@ static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the b
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 static const char *tagsel[][2] = {
-	{ "#5E81AC", "#2E3440" },
-	{ "#BF616A", "#2E3440" },
-	{ "#D08770", "#2E3440" },
-	{ "#EBCB8B", "#2E3440" },
-	{ "#A3BE8C", "#2E3440" },
+	{ "#2AA198", "#FDf6E3" },
+	{ "#DC322F", "#FDf6E3" },
+	{ "#CB4B16", "#FDf6E3" },
+	{ "#B58900", "#FDf6E3" },
+	{ "#859900", "#FDf6E3" },
 };
 
 static const Rule rules[] = {
@@ -95,11 +96,17 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 /* Custom Commands */
-static const char *firefoxcmd[] = { "firefox", NULL };
-static const char *roficmd[] = { "rofi", "-show", "run", NULL };
+static const char *browsercmd[] = { "qutebrowser", NULL };
+static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
 static const char *mutevolcmd[] = { "pamixer", "-t", NULL };
+static const char *nextsongcmd[] = { "playerctl", "next", NULL };
+static const char *prevsongcmd[] = { "playerctl", "previous", NULL };
+static const char *togglesongcmd[] = { "playerctl", "play-pause", NULL };
+static const char *sleepcmd[] = { "slock", "systemctl", "suspend", "-i", NULL };
+static const char *rofipowercmd[] = { "rofipower", NULL };
+//static const char *prtsccmd[] = { "maim", "~/Downloads/screenshot.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -141,11 +148,17 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
   
   /* Custom Keybinds */
-	{ MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
+	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = sleepcmd } },
   { MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
+	{ MODKEY,                       XK_q,      spawn,          {.v = rofipowercmd } },
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = upvolcmd } },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = downvolcmd } },
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = mutevolcmd } },
+	{ 0,                            XF86XK_AudioNext,          spawn,          {.v = nextsongcmd } },
+	{ 0,                            XF86XK_AudioPrev,          spawn,          {.v = prevsongcmd } },
+	{ 0,                            XF86XK_AudioPlay,          spawn,          {.v = togglesongcmd } },
+	//{ 0,                            XK_Print,                  spawn,          {.v = prtsccmd } },
 };
 
 /* button definitions */

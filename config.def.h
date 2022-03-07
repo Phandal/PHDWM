@@ -30,7 +30,7 @@ static const char *const autostart[] = {
 	"picom", NULL,
 	"/home/bailey/.fehbg", NULL,
 	"xset", "r", "rate", "300", "30", NULL,
-	"dunst", NULL,
+	"deadd-notification-center", NULL,
 	"mopidy", NULL,
 	"/home/bailey/.config/PHDWM/bar/bar.sh", NULL,
 	"mopidy", NULL,
@@ -61,7 +61,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 }, 
+	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 }, 
 };
 
 /* layout(s) */
@@ -97,21 +97,21 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* Custom Commands */
 static const char *browsercmd[] = { "chromium", NULL };
-static const char *roficmd[] = { "rofi", "-m", "-1", "-show", "drun", NULL };
+static const char *roficmd[] = { "rofi", "-m", "-4", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
 static const char *mutevolcmd[] = { "pamixer", "-t", NULL };
 static const char *nextsongcmd[] = { "playerctl", "next", NULL };
 static const char *prevsongcmd[] = { "playerctl", "previous", NULL };
-static const char *togglesongcmd[] = { "playerctl", "play-pause", NULL };
+static const char *togglesongcmd[] = { "playerctl," "play-pause", NULL };
 static const char *sleepcmd[] = { "slock", "systemctl", "suspend", "-i", NULL };
 static const char *rofipowercmd[] = { "rofipower", NULL };
-static const char *prntsccmd[] = { "maim", "--select", "|", "xclip", "-sel", "clip", "-target", "image/png", NULL };
+static const char *notifcmd[] = { "notifToggle", NULL };
+static const char *prntsccmd[] = { "selScreenshot", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	/*{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },*/
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+        { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
@@ -148,16 +148,17 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
   
   /* Custom Keybinds */
-	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = sleepcmd } },
-  { MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
-	{ MODKEY,                       XK_q,      spawn,          {.v = rofipowercmd } },
+	{ MODKEY,                       XK_b,                      spawn,          {.v = browsercmd } },
+	{ MODKEY|ShiftMask,             XK_l,                      spawn,          {.v = sleepcmd } },
+	{ MODKEY,                       XK_r,                      spawn,          {.v = roficmd } },
+	{ MODKEY,                       XK_q,                      spawn,          {.v = rofipowercmd } },
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = upvolcmd } },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = downvolcmd } },
 	{ 0,                            XF86XK_AudioMute,          spawn,          {.v = mutevolcmd } },
 	{ 0,                            XF86XK_AudioNext,          spawn,          {.v = nextsongcmd } },
 	{ 0,                            XF86XK_AudioPrev,          spawn,          {.v = prevsongcmd } },
 	{ 0,                            XF86XK_AudioPlay,          spawn,          {.v = togglesongcmd } },
+	{ MODKEY,                       XK_n,                      spawn,          {.v = notifcmd } },
 	{ 0,                            XK_Print,                  spawn,          {.v = prntsccmd } },
 };
 

@@ -1,0 +1,16 @@
+* Dependencies
+rofi
+deadd-notification-center
+playerctl
+pamixer
+chromium
+
+* Things to change
+1. There is an autostart array in ~config.h~ that you must change the things you want to run at startup
+2. Soft link all the scripts in the scripts directory to ~/usr/local/bin~
+   #+BEGIN_SRC bash
+     ln -s <path/to/the/scripts/> /usr/share/bin/<notifToggle|selScreenshot|rofipower>
+   #+END_SRC
+
+* Todo
+I would like to find out what patches I have used. To do this I will have to restart with a fresh version of DWM and use git patch to get all the patches.

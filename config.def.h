@@ -61,7 +61,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "discord",  NULL,       NULL,       1 << 3,       0,            0 },
+	{ "discord",  NULL,       NULL,       1 << 3,       0,            1 },
 	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 }, 
 };
 
@@ -97,7 +97,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 /* Custom Commands */
-static const char *browsercmd[] = { "chromium", NULL };
+static const char *browsercmd[] = { "firefox", NULL };
+static const char *editorcmd[] = { "emacs", NULL };
 static const char *roficmd[] = { "rofi", "-m", "-4", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };
@@ -149,6 +150,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
   
   /* Custom Keybinds */
+  { MODKEY,                       XK_e,                      spawn,          {.v = editorcmd } },
 	{ MODKEY,                       XK_b,                      spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,             XK_l,                      spawn,          {.v = sleepcmd } },
 	{ MODKEY,                       XK_r,                      spawn,          {.v = roficmd } },

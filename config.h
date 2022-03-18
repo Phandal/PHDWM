@@ -97,8 +97,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 /* Custom Commands */
-static const char *browsercmd[] = { "chromium", NULL };
-static const char *editorcmd[] = {"emacs", NULL };
+static const char *browsercmd[] = { "firefox", NULL };
+static const char *editorcmd[] = { "emacs", NULL };
 static const char *roficmd[] = { "rofi", "-m", "-4", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };

@@ -30,7 +30,8 @@ static const char *const autostart[] = {
 	"picom", NULL,
 	"/home/bailey/.fehbg", NULL,
 	"xset", "r", "rate", "300", "30", NULL,
-	"deadd-notification-center", NULL,
+	"dunst", NULL,
+	"emacs", "--daemon", NULL,
 	"mopidy", NULL,
 	"/home/bailey/.config/PHDWM/bar/bar.sh", NULL,
 	"mopidy", NULL,
@@ -98,7 +99,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* Custom Commands */
 static const char *browsercmd[] = { "firefox", NULL };
-static const char *editorcmd[] = { "emacs", NULL };
+static const char *editorcmd[] = { "emacsclient", "-n", "-c", NULL };
 static const char *roficmd[] = { "rofi", "-m", "-4", "-show", "drun", NULL };
 static const char *upvolcmd[] = { "pamixer", "--increase", "5", NULL };
 static const char *downvolcmd[] = { "pamixer", "--decrease", "5", NULL };

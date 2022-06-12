@@ -52,6 +52,24 @@ wlan() {
 	esac
 }
 
+internet() {
+  eth=$(cat /sys/class/net/en*/operstate 2> /dev/null)
+  if [ "$eth" == "down" ]; then
+    wifi=$(cat /sys/class/net/wl*/operstate 2> /dev/null)
+    if [ "$wifi" == "up" ]; then
+      wifi=$(nmcli -t -f NAME c show --active)
+      printf "^c$black^ ^b$yellow^ 直 WIFI"
+      printf "^c$white^ ^b$black^ %s" "$wifi"
+    else
+      printf "^c$black^ ^b$yellow^ 睊 WIFI"
+      printf "^c$white^ ^b$black^ Disconnected"
+    fi
+  else
+    printf "^c$black^ ^b$yellow^  ETH";
+    printf "^c$white^ ^b$black^ Connected"
+  fi
+}
+
 clock() {
 	printf "^c$black^ ^b$blue^ "
 	printf "^c$white^ ^b$black^ $(date '+%I:%M %p') "
@@ -74,5 +92,5 @@ while true; do
 	interval=$((interval + 1))
 
 	#sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$updates $(song) $(wlan) $(cpu) $(mem) $(sound) $(clock)"
+  sleep 1 && xsetroot -name "$updates $(song) $(internet) $(cpu) $(mem) $(sound) $(clock)"
 done

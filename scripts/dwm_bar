@@ -1,0 +1,87 @@
+#!/bin/bash
+
+interval=0
+
+cpu() {
+	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
+
+ 	printf "  CPU:"
+	printf " $cpu_val"
+}
+
+sound() {
+  volume=$(pamixer --get-volume-human)
+  muted=${volume::-1}
+  if [ "$muted" == "mute" ]; then
+    printf " 婢 VOL:"
+  else
+    printf " 墳 VOL:"
+  fi
+  printf " %s" "$volume"
+}
+
+pkg_updates() {
+	updates=$(checkupdates | wc -l)   # arch , needs pacman contrib
+
+	if [ "$updates" == "0" ]; then
+		printf "  Fully Updated"
+	else
+		printf "  $updates"" updates"
+	fi
+}
+
+mem() {
+	printf "  MEM:"
+	printf " $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+}
+
+wlan() {
+  printf "  ETH:";
+	case "$(cat /sys/class/net/en*/operstate 2>/dev/null)" in
+	up) printf " Connected";;
+	down) printf " Disconnected";;
+	esac
+}
+
+internet() {
+  eth=$(cat /sys/class/net/en*/operstate 2> /dev/null | head -n 1)
+  if [ "$eth" == "down" ]; then
+    wifi=$(cat /sys/class/net/wl*/operstate 2> /dev/null)
+    if [ "$wifi" == "up" ]; then
+      wifi=$(nmcli -t -f NAME c show --active)
+      printf " 直 WIFI:"
+      printf " %s" "$wifi"
+    else
+      printf " 睊 WIFI:"
+      printf " Disconnected"
+    fi
+  else
+    printf "  ETH:";
+    printf " Connected"
+  fi
+}
+
+clock() {
+	printf " "
+	printf " $(date '+%I:%M %p') "
+}
+
+song() {
+  playing=$(playerctl status)
+  if [ "$playing" != "Playing" ]; then
+    cur_song="Nothing Playing"
+  else
+    cur_song=$(playerctl metadata --format '{{title}} By: {{artist}}')
+  fi
+  printf "  Playing:"
+  printf " $cur_song"
+}
+
+while true; do
+
+	[ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
+	interval=$((interval + 1))
+
+	#sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
+  sleep 1 && xsetroot -name "$updates | $(song) | $(internet) | $(cpu) | $(mem) | $(sound) | $(clock)"
+done

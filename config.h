@@ -6,7 +6,7 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = {"JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true"};
 static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true";
 static const char col_gray1[]       = "#000000";
@@ -16,8 +16,8 @@ static const char col_gray4[]       = "#444444";
 static const char col_cyan[]        = "#7799BB";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
+	[SchemeSel]  = { col_gray3, col_gray4, col_gray3  },
 };
 
 /* tagging */
@@ -34,7 +34,7 @@ static const Rule rules[] = {
   { "Microsoft Teams - Preview", NULL,       NULL,       2,            0,            1 },
   { "Slack",                     NULL,       NULL,       2,            0,            0 },
   { "crx_pkooggnaalmfkidjmlhoelhdllpphaga",                   NULL,       NULL,       3,            0,            1 },
-	{ "discord",                   NULL,       NULL,       2 ,           0,            1 },
+  { "discord",                   NULL,       NULL,       2 ,           0,            1 },
 };
 
 /* layout(s) */
@@ -64,7 +64,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-m", "0", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray3, "-m", "0", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "google-chrome-stable", NULL };
 static const char *editorcmd[] = { "emacsclient", "-n", "-c", NULL };

@@ -63,7 +63,13 @@ internet() {
 
 clock() {
 	printf " "
-	printf " $(date '+%I:%M %p') "
+  printf " $(date '+%R')"
+	# printf " $(date '+%I:%M %p') "
+}
+
+day() {
+  printf " "
+  printf " $(date '+%b %e %Y')"
 }
 
 song() {
@@ -92,5 +98,5 @@ while true; do
 	interval=$((interval + 1))
 
 	#sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$(disturb) | $updates | $(song) | $(internet) | $(cpu) | $(mem) | $(sound) | $(clock)"
+  sleep 1 && xsetroot -name "$(disturb) | $updates | $(song) | $(internet) | $(cpu) | $(mem) | $(sound) | $(clock) | $(day)"
 done

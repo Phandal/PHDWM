@@ -1,0 +1,13 @@
+#!/bin/sh
+
+is_paused=$(dunstctl is-paused)
+
+if [ $is_paused = true ]; then
+  dunstctl set-paused false
+  dunstify "Notifications Enabled"
+else
+  dunstify "Notifications Disabled"
+  sleep 4
+  dunstctl set-paused true
+fi
+

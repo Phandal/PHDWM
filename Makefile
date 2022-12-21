@@ -42,6 +42,10 @@ install: all
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
 	cp -f scripts/dwm_bar ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm_bar
+	cp -f scripts/shot ${DESTDIR}${PREFIX}/bin
+	chmod 755 ${DISDIR}${PREFIX}/bin/shot
+	cp -f scripts/donotdisturb ${DESTDIR}${PREFIX}/bin
+	chmod 755 ${DISDIR}${PREFIX}/bin/donotdisturb
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1

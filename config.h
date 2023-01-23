@@ -31,8 +31,8 @@ static const Rule rules[] = {
 	/* class                       instance    title       tags mask     isfloating   monitor */
 	// { "Gimp",                   NULL,       NULL,       0,            1,           -1 },
 	// { "Firefox",                NULL,       NULL,       1 << 8,       0,           -1 },
-  { "Microsoft Teams - Preview", NULL,       NULL,       2,            0,            1 },
-  { "Slack",                     NULL,       NULL,       2,            0,            0 },
+  { "Microsoft Teams - Preview", NULL,       NULL,       8,            0,            1 },
+  { "Slack",                     NULL,       NULL,       8,            0,            0 },
   { "crx_pkooggnaalmfkidjmlhoelhdllpphaga",                   NULL,       NULL,       3,            0,            1 },
   { "discord",                   NULL,       NULL,       2 ,           0,            1 },
 };
@@ -40,7 +40,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {

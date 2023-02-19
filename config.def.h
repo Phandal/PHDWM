@@ -7,13 +7,13 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = {"JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true"};
-static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true";
-static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#333333";
-static const char col_gray3[]       = "#999999";
-static const char col_gray4[]       = "#444444";
-static const char col_cyan[]        = "#7799BB";
+static const char *fonts[]          = {"JetBrainsMono Nerd Font Mono:pixelsize=8:antialias=true:autohint=true"};
+static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:pixelsize=8:antialias=true:autohint=true";
+static const char col_gray1[]       = "#3B4252";
+static const char col_gray2[]       = "#4C566A";
+static const char col_gray3[]       = "#E5E9F0";
+static const char col_gray4[]       = "#4C566A";
+static const char col_cyan[]        = "#8FBCBB";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },

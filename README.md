@@ -26,3 +26,4 @@ All patches were from [here](https://dwm.suckless.org/patches/).
 | Patch Name    |
 | ------------- |
 | statusallmons |
+| vanitygaps    |

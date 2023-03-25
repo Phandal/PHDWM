@@ -12,8 +12,8 @@ static const unsigned int gappov    = 10;       /* horiz outer gap between windo
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = {"JetBrainsMono Nerd Font Mono:pixelsize=8:antialias=true:autohint=true"};
-static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:pixelsize=8:antialias=true:autohint=true";
+static const char *fonts[]          = {"JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true"};
+static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true";
 static const char col_gray1[]       = "#3B4252";
 static const char col_gray2[]       = "#4C566A";
 static const char col_gray3[]       = "#E5E9F0";
@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "󰒱", "", "󰇮", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -53,6 +53,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "###",      gaplessgrid },    /* first entry is default */
 };
 
 /* key definitions */
@@ -75,6 +76,7 @@ static const char *browsercmd[]  = { "google-chrome-stable", NULL };
 static const char *editorcmd[] = { "emacsclient", "-n", "-c", NULL };
 // static const char *screenshotcmd[] = { "maim", "-s", "-u", "|", "tee", "~/Downloads/$(date +%s).png", "|", "xclip", "-selection", "clipboard", "-t", "image/png", NULL };
 static const char *screenshotcmd[] = { "shot", NULL };
+static const char *screenshotsavecmd[] = { "shot_save", NULL };
 static const char *volumeupcmd[] = { "pamixer", "-i", "2" , NULL };
 static const char *volumedowncmd[] = { "pamixer", "-d", "2" , NULL };
 static const char *volumemutecmd[] = { "pamixer", "-t", NULL };
@@ -92,6 +94,7 @@ static const Key keys[] = {
         { 0,                        XF86XK_AudioPrev,         spawn,          {.v = prevsongcmd } },
         { 0,                        XF86XK_AudioPlay,         spawn,          {.v = playsongcmd } },
         { 0,                        XK_Print,                 spawn,          {.v = screenshotcmd } },
+        { ShiftMask,                XK_Print,                 spawn,          {.v = screenshotsavecmd } },
         { MODKEY,                   XK_e,                     spawn,          {.v = editorcmd } },
 	{ AltMask,                  XK_space,                 spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,         XK_Return,                spawn,          {.v = termcmd } },
@@ -109,6 +112,7 @@ static const Key keys[] = {
 	{ MODKEY,                   XK_t,                     setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                   XK_f,                     setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                   XK_m,                     setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                   XK_g,                     setlayout,      {.v = &layouts[3]} },
 	//{ MODKEY,                   XK_space,                 setlayout,      {0} },
 	{ MODKEY|ShiftMask,         XK_space,                 togglefloating, {0} },
 	{ MODKEY,                   XK_0,                     view,           {.ui = ~0 } },

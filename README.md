@@ -11,7 +11,7 @@ Custom DWM config files written by me for me!
  * playerctl
  * spotify
  * dunst
- * maim
+ * flameshot
 
 ## Installation
 After install all the dependencies clone the repo and run make!
@@ -23,7 +23,9 @@ sudo make clean install
 
 ## Patches
 All patches were from [here](https://dwm.suckless.org/patches/).
-| Patch Name    |
-| ------------- |
-| statusallmons |
-| vanitygaps    |
+| Patch Name                 |
+| -------------------------- |
+| statusallmons              |
+| vanitygaps                 |
+| alpha - fixborders         |
+| gaplessgrid                |

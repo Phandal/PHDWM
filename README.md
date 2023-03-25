@@ -22,10 +22,13 @@ sudo make clean install
 ```
 
 ## Patches
-All patches were from [here](https://dwm.suckless.org/patches/).
+All patches were from [here](https://dwm.suckless.org/patches/) or [here](https://github.com/bakkeby/patches/wiki).
 | Patch Name                 |
 | -------------------------- |
 | statusallmons              |
 | vanitygaps                 |
 | alpha - fixborders         |
 | gaplessgrid                |
+| bakkeby dragmfact          |
+| cfacts                     |
+| bakkeby dragcfact          |

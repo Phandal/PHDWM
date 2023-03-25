@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # maim -s -u | tee ~/Downloads/$(date +%s).png | xclip -selection clipboard -t image/png
-flameshot gui --clipboard
+flameshot gui --path ~/Downloads/$(date +%s).png

@@ -12,6 +12,7 @@ Custom DWM config files written by me for me!
  * spotify
  * dunst
  * flameshot
+ * wireless_tools
 
 ## Installation
 After install all the dependencies clone the repo and run make!

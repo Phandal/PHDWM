@@ -84,6 +84,7 @@ static const char *nextsongcmd[] = { "playerctl", "--player=spotify", "next", NU
 static const char *prevsongcmd[] = { "playerctl", "--player=spotify", "previous", NULL };
 static const char *playsongcmd[] = { "playerctl", "--player=spotify", "play-pause", NULL };
 static const char *donotdisturbcmd[] = { "donotdisturb", NULL };
+static const char *filebrowsercmd[] = { "pcmanfm", NULL };
 
 static const Key keys[] = {
 	/* modifier                 key                       function        argument */
@@ -99,6 +100,7 @@ static const Key keys[] = {
 	{ AltMask,                  XK_space,                 spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,         XK_Return,                spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,         XK_b,                     spawn,          {.v = browsercmd } },
+  { MODKEY|ShiftMask,         XK_f,                     spawn,          {.v = filebrowsercmd } },
 	{ MODKEY,                   XK_b,                     togglebar,      {0} },
 	{ MODKEY,                   XK_j,                     focusstack,     {.i = +1 } },
 	{ MODKEY,                   XK_k,                     focusstack,     {.i = -1 } },

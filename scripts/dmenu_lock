@@ -1,0 +1,7 @@
+#!/bin/sh
+
+option=$(echo -e "suspend\nshutdown\nreboot" | dmenu "$@")
+
+if [ ! -z $option ]; then
+   systemctl $option
+fi

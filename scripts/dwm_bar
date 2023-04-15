@@ -55,7 +55,13 @@ internet() {
   done
 
   if [ "$ethStatus" == "down" ]; then
-    wifi=$(cat /sys/class/net/wl*/operstate 2> /dev/null)
+    for w in $(cat /sys/class/net/wl*/operstate 2> /dev/null)
+    do
+      if [ "$w" == "up" ]; then
+        wifi=$w
+        break
+      fi
+    done
     if [ "$wifi" == "up" ]; then
       wifi=$(iwgetid --raw)
       printf " 直 WIFI:"

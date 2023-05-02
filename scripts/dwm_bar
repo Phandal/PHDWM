@@ -13,9 +13,9 @@ sound() {
   volume=$(pamixer --get-volume-human)
   muted=${volume::-1}
   if [ "$muted" == "mute" ]; then
-    printf " 婢 VOL:"
+    printf " 󰸈 VOL:"
   else
-    printf " 墳 VOL:"
+    printf " 󰕾 VOL:"
   fi
   printf " %s" "$volume"
 }
@@ -36,7 +36,7 @@ mem() {
 }
 
 wlan() {
-  printf "  ETH:";
+  printf " 󰈁 ETH:";
 	case "$(cat /sys/class/net/en*/operstate 2>/dev/null)" in
 	up) printf " Connected";;
 	down) printf " Disconnected";;
@@ -64,14 +64,14 @@ internet() {
     done
     if [ "$wifi" == "up" ]; then
       wifi=$(iwgetid --raw)
-      printf " 直 WIFI:"
+      printf " 󰖩 WIFI:"
       printf " %s" "$wifi"
     else
-      printf " 睊 WIFI:"
+      printf " 󰖪 WIFI:"
       printf " Disconnected"
     fi
   else
-    printf "  ETH:";
+    printf " 󰈁 ETH:";
     printf " Connected"
   fi
 }
@@ -94,16 +94,16 @@ song() {
   else
     cur_song=$(playerctl -p spotify metadata --format '{{title}} By: {{artist}}')
   fi
-  printf "  Playing:"
+  printf " 󰓃 Playing:"
   printf " $cur_song"
 }
 
 disturb() {
   doNotDisturb=$(dunstctl is-paused)
   if [ $doNotDisturb == "true" ]; then
-    printf " "
+    printf " 󰂛"
   else
-    printf " "
+    printf " 󰂚"
   fi
 }
 

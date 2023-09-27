@@ -33,3 +33,4 @@ All patches were from [here](https://dwm.suckless.org/patches/) or [here](https:
 | bakkeby dragmfact          |
 | cfacts                     |
 | bakkeby dragcfact          |
+| centeredmaster             |

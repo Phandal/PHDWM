@@ -245,6 +245,7 @@ static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
 static void centeredmaster(Monitor *m);
 static void centeredfloatingmaster(Monitor *m);
+static void threecolumn(Monitor *m);
 
 /* variables */
 static const char broken[] = "broken";
@@ -2516,30 +2517,6 @@ zoom(const Arg *arg)
 	pop(c);
 }
 
-int
-main(int argc, char *argv[])
-{
-	if (argc == 2 && !strcmp("-v", argv[1]))
-		die("dwm-"VERSION);
-	else if (argc != 1)
-		die("usage: dwm [-v]");
-	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
-		fputs("warning: no locale support\n", stderr);
-	if (!(dpy = XOpenDisplay(NULL)))
-		die("dwm: cannot open display");
-	checkotherwm();
-	setup();
-#ifdef __OpenBSD__
-	if (pledge("stdio rpath proc exec", NULL) == -1)
-		die("pledge");
-#endif /* __OpenBSD__ */
-	scan();
-	run();
-	cleanup();
-	XCloseDisplay(dpy);
-	return EXIT_SUCCESS;
-}
-
 void
 centeredmaster(Monitor *m)
 {
@@ -2641,4 +2618,103 @@ centeredfloatingmaster(Monitor *m)
 		       m->wh - (2*c->bw), 0);
 		tx += WIDTH(c);
 	}
+}
+
+void
+threecolumn(Monitor * m)
+{
+	int x, y, h, w, mw, sw, bdw;
+	unsigned int i, n;
+	Client * c;
+
+	for (n = 0, c = nexttiled(m->clients); c;
+	        c = nexttiled(c->next), n++);
+
+	if (n == 0)
+		return;
+
+	c = nexttiled(m->clients);
+
+	mw = m->mfact * m->ww;
+	sw = (m->ww - mw) / 2;
+	bdw = (2 * c->bw);
+	resize(c,
+	       n < 3 ? m->wx : m->wx + sw,
+	       m->wy,
+	       n == 1 ? m->ww - bdw : mw - bdw,
+	       m->wh - bdw,
+	       False);
+
+	if (--n == 0)
+		return;
+
+	w = (m->ww - mw) / ((n > 1) + 1);
+	c = nexttiled(c->next);
+
+	if (n > 1)
+	{
+		x = m->wx + ((n > 1) ? mw + sw : mw);
+		y = m->wy;
+		h = m->wh / (n / 2);
+
+		if (h < bh)
+			h = m->wh;
+
+		for (i = 0; c && i < n / 2; c = nexttiled(c->next), i++)
+		{
+			resize(c,
+			       x,
+			       y,
+			       w - bdw,
+			       (i + 1 == n / 2) ? m->wy + m->wh - y - bdw : h - bdw,
+			       False);
+
+			if (h != m->wh)
+				y = c->y + HEIGHT(c);
+		}
+	}
+
+	x = (n + 1 / 2) == 1 ? mw : m->wx;
+	y = m->wy;
+	h = m->wh / ((n + 1) / 2);
+
+	if (h < bh)
+		h = m->wh;
+
+	for (i = 0; c; c = nexttiled(c->next), i++)
+	{
+		resize(c,
+		       x,
+		       y,
+		       (i + 1 == (n + 1) / 2) ? w - bdw : w - bdw,
+		       (i + 1 == (n + 1) / 2) ? m->wy + m->wh - y - bdw : h - bdw,
+		       False);
+
+		if (h != m->wh)
+			y = c->y + HEIGHT(c);
+	}
+}
+
+int
+main(int argc, char *argv[])
+{
+	if (argc == 2 && !strcmp("-v", argv[1]))
+		die("dwm-"VERSION);
+	else if (argc != 1)
+		die("usage: dwm [-v]");
+	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
+		fputs("warning: no locale support\n", stderr);
+	if (!(dpy = XOpenDisplay(NULL)))
+		die("dwm: cannot open display");
+	checkotherwm();
+	setup();
+#ifdef __OpenBSD__
+	if (pledge("stdio rpath proc exec", NULL) == -1)
+		die("pledge");
+#endif /* __OpenBSD__ */
+	scan();
+	run();
+	cleanup();
+	XCloseDisplay(dpy);
+	return EXIT_SUCCESS;
 }

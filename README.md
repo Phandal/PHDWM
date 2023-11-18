@@ -30,6 +30,7 @@ All patches were from [here](https://dwm.suckless.org/patches/) or [here](https:
 | vanitygaps                 |
 | alpha - fixborders         |
 | gaplessgrid                |
+| threecolumn                |
 | bakkeby dragmfact          |
 | cfacts                     |
 | bakkeby dragcfact          |

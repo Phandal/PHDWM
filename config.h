@@ -16,11 +16,19 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 // static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true";
 static const char *fonts[]          = {"Iosevka Nerd Font Mono:pixelsize=13:antialias=true:autohint=true"};
 static const char dmenufont[]       = "Iosevka Nerd Font Mono:pixelsize=13:antialias=true:autohint=true";
-static const char col_gray1[]       = "#3B4252";
-static const char col_gray2[]       = "#4C566A";
-static const char col_gray3[]       = "#E5E9F0";
-static const char col_gray4[]       = "#4C566A";
-static const char col_cyan[]        = "#8FBCBB";
+// #### NORD ####
+// static const char col_gray1[]       = "#3B4252";
+// static const char col_gray2[]       = "#4C566A";
+// static const char col_gray3[]       = "#E5E9F0";
+// static const char col_gray4[]       = "#4C566A";
+// static const char col_cyan[]        = "#8FBCBB";
+
+// #### GRUVBOX ####
+static const char col_gray1[]       = "#282828";
+static const char col_gray2[]       = "#504945";
+static const char col_gray3[]       = "#EBDBB2";
+static const char col_gray4[]       = "#504945";
+static const char col_cyan[]        = "#B8BB26";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
@@ -152,13 +160,13 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,                Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,                Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,                Button2,        zoom,           {0} },
-  { ClkWinTitle,          MODKEY,           Button1,        spawn,          {.v = donotdisturbcmd } },
+        { ClkWinTitle,          MODKEY,           Button1,        spawn,          {.v = donotdisturbcmd } },
 	{ ClkStatusText,        0,                Button2,        spawn,          {.v = volumemutecmd } },
-  { ClkStatusText,        0,                Button4,        spawn,          {.v = volumeupcmd } },
-  { ClkStatusText,        0,                Button5,        spawn,          {.v = volumedowncmd } },
+        { ClkStatusText,        0,                Button4,        spawn,          {.v = volumeupcmd } },
+        { ClkStatusText,        0,                Button5,        spawn,          {.v = volumedowncmd } },
 	{ ClkStatusText,        MODKEY,           Button1,        spawn,          {.v = prevsongcmd } },
-  { ClkStatusText,        MODKEY,           Button3,        spawn,          {.v = nextsongcmd } },
-  { ClkStatusText,        MODKEY,           Button2,        spawn,          {.v = playsongcmd } },
+        { ClkStatusText,        MODKEY,           Button3,        spawn,          {.v = nextsongcmd } },
+        { ClkStatusText,        MODKEY,           Button2,        spawn,          {.v = playsongcmd } },
 	{ ClkClientWin,         MODKEY,           Button1,        dragmfact,      {0} },
 	{ ClkClientWin,         MODKEY,           Button3,        dragcfact,      {0} },
 	{ ClkClientWin,         MODKEY,           Button2,        togglefloating, {0} },

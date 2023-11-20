@@ -16,11 +16,19 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 // static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true";
 static const char *fonts[]          = {"Iosevka Nerd Font Mono:pixelsize=13:antialias=true:autohint=true"};
 static const char dmenufont[]       = "Iosevka Nerd Font Mono:pixelsize=13:antialias=true:autohint=true";
-static const char col_gray1[]       = "#3B4252";
-static const char col_gray2[]       = "#4C566A";
-static const char col_gray3[]       = "#E5E9F0";
-static const char col_gray4[]       = "#4C566A";
-static const char col_cyan[]        = "#8FBCBB";
+// #### NORD ####
+// static const char col_gray1[]       = "#3B4252";
+// static const char col_gray2[]       = "#4C566A";
+// static const char col_gray3[]       = "#E5E9F0";
+// static const char col_gray4[]       = "#4C566A";
+// static const char col_cyan[]        = "#8FBCBB";
+
+// #### GRUVBOX ####
+static const char col_gray1[]       = "#282828";
+static const char col_gray2[]       = "#504945";
+static const char col_gray3[]       = "#EBDBB2";
+static const char col_gray4[]       = "#504945";
+static const char col_cyan[]        = "#B8BB26";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },

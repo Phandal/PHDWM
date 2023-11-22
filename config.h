@@ -14,8 +14,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 // static const char *fonts[]          = {"JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true"};
 // static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:pixelsize=12:antialias=true:autohint=true";
-static const char *fonts[]          = {"Iosevka Nerd Font Mono:pixelsize=13:antialias=true:autohint=true"};
-static const char dmenufont[]       = "Iosevka Nerd Font Mono:pixelsize=13:antialias=true:autohint=true";
+static const char *fonts[]          = {"Iosevka NFM:pixelsize=13:antialias=true:autohint=true"};
+static const char dmenufont[]       = "Iosevka NFM:pixelsize=13:antialias=true:autohint=true";
 // #### NORD ####
 // static const char col_gray1[]       = "#3B4252";
 // static const char col_gray2[]       = "#4C566A";

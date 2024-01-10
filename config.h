@@ -93,9 +93,12 @@ static const char *screenshotsavecmd[] = { "shot_save", NULL };
 static const char *volumeupcmd[] = { "pamixer", "-i", "2" , NULL };
 static const char *volumedowncmd[] = { "pamixer", "-d", "2" , NULL };
 static const char *volumemutecmd[] = { "pamixer", "-t", NULL };
-static const char *nextsongcmd[] = { "playerctl", "--player=spotify", "next", NULL };
-static const char *prevsongcmd[] = { "playerctl", "--player=spotify", "previous", NULL };
-static const char *playsongcmd[] = { "playerctl", "--player=spotify", "play-pause", NULL };
+// static const char *nextsongcmd[] = { "playerctl", "--player=spotify", "next", NULL };
+// static const char *prevsongcmd[] = { "playerctl", "--player=spotify", "previous", NULL };
+// static const char *playsongcmd[] = { "playerctl", "--player=spotify", "play-pause", NULL };
+static const char *nextsongcmd[] = { "playerctl", "next", NULL };
+static const char *prevsongcmd[] = { "playerctl", "previous", NULL };
+static const char *playsongcmd[] = { "playerctl", "play-pause", NULL };
 static const char *donotdisturbcmd[] = { "donotdisturb", NULL };
 static const char *filebrowsercmd[] = { "pcmanfm", NULL };
 
@@ -110,7 +113,7 @@ static const Key keys[] = {
   { 0,                        XK_Print,                 spawn,          {.v = screenshotcmd } },
   { ShiftMask,                XK_Print,                 spawn,          {.v = screenshotsavecmd } },
   { MODKEY,                   XK_e,                     spawn,          {.v = editorcmd } },
-	{ AltMask,                  XK_space,                 spawn,          {.v = dmenucmd } },
+	{ MODKEY,                   XK_space,                 spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,         XK_Return,                spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,         XK_b,                     spawn,          {.v = browsercmd } },
   { MODKEY|ShiftMask,         XK_f,                     spawn,          {.v = filebrowsercmd } },

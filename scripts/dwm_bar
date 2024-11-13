@@ -1,6 +1,44 @@
 #!/bin/bash
 
 interval=0
+battery_alert=0
+
+battery() {
+  bat_val=$(cat /sys/class/power_supply/BAT0/capacity)
+  
+  if [[ bat_val -eq 100 ]]; then
+    printf " 󰁹 BATT:"
+  elif [[ $bat_val -ge 90 ]]; then
+    printf " 󰂂 BATT:"
+  elif [[ $bat_val -ge 80 ]]; then
+    printf " 󰂁 BATT:"
+  elif [[ $bat_val -ge 70 ]]; then
+    printf " 󰂀 BATT:"
+  elif [[ $bat_val -ge 60 ]]; then
+    printf " 󰁿 BATT:"
+  elif [[ $bat_val -ge 50 ]]; then
+    printf " 󰁾 BATT:"
+  elif [[ $bat_val -ge 40 ]]; then
+    printf " 󰁽 BATT:"
+  elif [[ $bat_val -ge 30 ]]; then
+    printf " 󰁼 BATT:"
+  elif [[ $bat_val -ge 20 ]]; then
+    printf " 󰁻 BATT:"
+  elif [[ $bat_val -ge 10 ]]; then
+    printf " 󰁺 BATT:"
+  else
+    printf " 󰂎 BATT:"
+  fi
+
+  printf " $bat_val%%"
+
+  if [[ $battery_alert -eq 0 ]] && [[ $bat_val -le 15 ]]; then
+    battery_alert=1
+    dunstify --urgency=critical "LOW BATTERY!" "Please plug me in!"
+  elif [[ $batter_alert -eq 1 ]] && [[ $bat_val -gt 15 ]]; then
+    battery_alert=0
+  fi
+}
 
 cpu() {
 	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
@@ -113,5 +151,9 @@ while true; do
 	interval=$((interval + 1))
 
 	#sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$(disturb) | $updates | $(song) | $(internet) | $(cpu) | $(mem) | $(sound) | $(clock) | $(day)"
+  if [[ -d "/sys/class/power_supply/BAT0" ]]; then
+    sleep 1 && xsetroot -name "$(disturb) | $updates | $(battery) | $(song) | $(internet) | $(cpu) | $(mem) | $(sound) | $(clock) | $(day)"
+  else
+    sleep 1 && xsetroot -name "$(disturb) | $updates | $(song) | $(internet) | $(cpu) | $(mem) | $(sound) | $(clock) | $(day)"
+  fi
 done

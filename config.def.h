@@ -116,12 +116,8 @@ static const char *dmenucmd[] = {"dmenu_run", "-fn", dmenufont, "-nb",
                                  col_gray1,   "-nf", col_gray3, "-sb",
                                  col_gray2,   "-sf", col_gray3, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
-/*static const char *browsercmd[] = {"google-chrome-stable", NULL};*/
 static const char *browsercmd[] = {"brave", NULL};
 static const char *editorcmd[] = {"emacsclient", "-n", "-c", NULL};
-// static const char *screenshotcmd[] = { "maim", "-s", "-u", "|", "tee",
-// "~/Downloads/$(date +%s).png", "|", "xclip", "-selection", "clipboard", "-t",
-// "image/png", NULL };
 static const char *screenshotcmd[] = {"shot", NULL};
 static const char *screenshotsavecmd[] = {"shot_save", NULL};
 static const char *volumeupcmd[] = {"pamixer", "-i", "2", NULL};

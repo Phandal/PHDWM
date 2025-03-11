@@ -31,13 +31,6 @@ battery() {
   fi
 
   printf " $bat_val%%"
-
-  if [[ $battery_alert -eq 0 ]] && [[ $bat_val -le 15 ]]; then
-    battery_alert=1
-    dunstify --urgency=critical "LOW BATTERY!" "Please plug me in!"
-  elif [[ $batter_alert -eq 1 ]] && [[ $bat_val -gt 15 ]]; then
-    battery_alert=0
-  fi
 }
 
 cpu() {
@@ -146,12 +139,19 @@ disturb() {
 }
 
 while true; do
-
 	[ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
 
 	#sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
   if [[ -d "/sys/class/power_supply/BAT0" ]]; then
+    bat_val=$(cat /sys/class/power_supply/BAT0/capacity)
+    if [[ $battery_alert -eq 0 ]] && [[ $bat_val -le 15 ]]; then
+      battery_alert=1
+      dunstify --urgency=critical "LOW BATTERY!" "Please plug me in!"
+    elif [[ $battery_alert -eq 1 ]] && [[ $bat_val -gt 15 ]]; then
+      battery_alert=0
+    fi
+
     sleep 1 && xsetroot -name "$(disturb) | $updates | $(battery) | $(song) | $(internet) | $(cpu) | $(mem) | $(sound) | $(clock) | $(day)"
   else
     sleep 1 && xsetroot -name "$(disturb) | $updates | $(song) | $(internet) | $(cpu) | $(mem) | $(sound) | $(clock) | $(day)"

@@ -123,6 +123,8 @@ static const char *screenshotcmd[] = {"shot", NULL};
 static const char *screenshotsavecmd[] = {"shot_save", NULL};
 static const char *volumeupcmd[] = {"pamixer", "-i", "2", NULL};
 static const char *volumedowncmd[] = {"pamixer", "-d", "2", NULL};
+static const char *brightnessupcmd[] = {"brightnessctl", "s", "10%+", NULL};
+static const char *brightnessdowncmd[] = {"brightnessctl", "s", "10%-", NULL};
 static const char *volumemutecmd[] = {"pamixer", "-t", NULL};
 static const char *nextsongcmd[] = {"playerctl", "--player=spotify", "next",
                                     NULL};
@@ -141,6 +143,8 @@ static const Key keys[] = {
     {0, XF86XK_AudioNext, spawn, {.v = nextsongcmd}},
     {0, XF86XK_AudioPrev, spawn, {.v = prevsongcmd}},
     {0, XF86XK_AudioPlay, spawn, {.v = playsongcmd}},
+    {0, XF86XK_MonBrightnessUp, spawn, {.v = brightnessupcmd}},
+    {0, XF86XK_MonBrightnessDown, spawn, {.v = brightnessdowncmd}},
     {0, XK_Print, spawn, {.v = screenshotcmd}},
     {ShiftMask, XK_Print, spawn, {.v = screenshotsavecmd}},
     {MODKEY, XK_e, spawn, {.v = editorcmd}},

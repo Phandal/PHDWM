@@ -48,10 +48,22 @@ static const char dmenufont[] =
 // };
 
 // #### Everforest ####
-static const char col_gray1[] = "#2D353B";
-static const char col_gray2[] = "#343F44";
-static const char col_gray3[] = "#D3C6AA";
-static const char col_gray4[] = "#3D484D";
+// static const char col_gray1[] = "#2D353B";
+// static const char col_gray2[] = "#343F44";
+// static const char col_gray3[] = "#D3C6AA";
+// static const char col_gray4[] = "#3D484D";
+// static const char col_cyan[] = "#A7C080";
+// static const char *colors[][3] = {
+//     /*               fg         bg         border   */
+//     [SchemeNorm] = {col_gray3, col_gray1, col_gray1},
+//     [SchemeSel] = {col_gray3, col_gray4, col_gray4},
+// };
+
+// ### Black-Metal-Immortal ###
+static const char col_gray1[] = "#000000";
+static const char col_gray2[] = "#7799BB";
+static const char col_gray3[] = "#C1C1C1";
+static const char col_gray4[] = "#444444";
 static const char col_cyan[] = "#A7C080";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
@@ -114,7 +126,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = {"dmenu_run", "-fn", dmenufont, "-nb",
                                  col_gray1,   "-nf", col_gray3, "-sb",
-                                 col_gray2,   "-sf", col_gray3, NULL};
+                                 col_gray2,   "-sf", col_gray1, NULL};
 /* static const char *termcmd[] = {"alacritty", NULL}; */
 static const char *termcmd[] = {"ghostty", NULL};
 static const char *browsercmd[] = {"brave", NULL};
@@ -179,10 +191,10 @@ static const Key keys[] = {
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
+    {MODKEY | ShiftMask, XK_q, quit, {0}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
-};
+            TAGKEYS(XK_9, 8)};
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,

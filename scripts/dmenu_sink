@@ -1,0 +1,9 @@
+#! /bin/sh
+
+sinks=$(pactl --format=json list sinks)
+
+sink_name=$(echo "$sinks" | jq -r '.[].description' | dmenu -p "Select output:")
+
+sink_index=$(echo "$sinks" | jq -r --arg name "$sink_name" '.[] | select(.description == $name) | .index')
+
+[ -n "$sink_index" ] && pactl set-default-sink $sink_index

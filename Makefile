@@ -48,6 +48,8 @@ install: all
 	chmod 755 ${DESTDIR}${PREFIX}/bin/donotdisturb
 	cp -f scripts/shot_save ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/shot_save
+	cp -f scripts/dmenu_sink ${DESTDIR}${PREFIX}/bin
+	chmod 755 ${DESTDIR}${PREFIX}/bin/dmenu_sink
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1

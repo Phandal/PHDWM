@@ -1,6 +1,6 @@
 #!/bin/sh
 
-option=$(echo -e "suspend\nshutdown\nreboot" | dmenu "$@")
+option=$(echo -e "suspend\nshutdown\nreboot" | dmenu "$@" -p "Select option:")
 
 if [ ! -z $option ]; then
    systemctl $option

@@ -119,11 +119,11 @@ day() {
 }
 
 song() {
-  playing=$(playerctl -p spotify status)
+  playing=$(playerctl -p spotify,spotifyd status)
   if [ "$playing" != "Playing" ]; then
     cur_song="Nothing Playing"
   else
-    cur_song=$(playerctl -p spotify metadata --format '{{title}} By: {{artist}}')
+    cur_song=$(playerctl -p spotify,spotifyd metadata --format '{{title}} By: {{artist}}')
   fi
   printf " 󰓃 Playing:"
   printf " $cur_song"

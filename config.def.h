@@ -118,9 +118,9 @@ static const char *volumedowncmd[] = {"pamixer", "-d", "2", NULL};
 static const char *brightnessupcmd[] = {"brightnessctl", "s", "10%+", NULL};
 static const char *brightnessdowncmd[] = {"brightnessctl", "s", "10%-", NULL};
 static const char *volumemutecmd[] = {"pamixer", "-t", NULL};
-static const char *nextsongcmd[] = {"playerctl", "--player=spotify", "next", NULL};
-static const char *prevsongcmd[] = {"playerctl", "--player=spotify", "previous", NULL};
-static const char *playsongcmd[] = {"playerctl", "--player=spotify", "play-pause", NULL};
+static const char *nextsongcmd[] = {"playerctl", "--player=spotify,spotifyd", "next", NULL};
+static const char *prevsongcmd[] = {"playerctl", "--player=spotify,spotifyd", "previous", NULL};
+static const char *playsongcmd[] = {"playerctl", "--player=spotify,spotifyd", "play-pause", NULL};
 static const char *donotdisturbcmd[] = {"donotdisturb", NULL};
 static const char *filebrowsercmd[] = {"pcmanfm", NULL};
 

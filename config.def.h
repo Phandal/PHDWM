@@ -13,9 +13,12 @@ static const int smartgaps = 0; /* 1 means no outer gap when there is only one w
 static const int showbar = 1; /* 0 means no bar */
 static const int topbar = 1;  /* 0 means bottom bar */
 
-static const char *fonts[] = {"Iosevka NFM:pixelsize=13:antialias=true:autohint=true"};
+/* static const char *fonts[] = {"Iosevka NFM:pixelsize=13:antialias=true:autohint=true"}; */
+static const char *fonts[] = {"Hack Nerd Font Mono:pixelsize=13:antialias=true:autohint=true"};
 
-static const char dmenufont[] = {"Iosevka NFM:pixelsize=13:antialias=true:autohint=true"};
+/* static const char dmenufont[] = {"Iosevka NFM:pixelsize=13:antialias=true:autohint=true"}; */
+static const char dmenufont[] = {"Hack Nerd Font Mono:pixelsize=13:antialias=true:autohint=true"};
+
 //
 // #### NORD ####
 // static const char col_gray1[] = "#3B4252";

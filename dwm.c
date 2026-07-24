@@ -183,6 +183,8 @@ static long getstate(Window w);
 static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
 static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
+static void incgap(const Arg *arg);
+static void decgap(const Arg *arg);
 static void incnmaster(const Arg *arg);
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
@@ -1317,6 +1319,26 @@ grabkeys(void)
 					XGrabKey(dpy, code, keys[i].mod | modifiers[j], root,
 						True, GrabModeAsync, GrabModeAsync);
 	}
+}
+
+void
+incgap(const Arg *arg)
+{
+  selmon->gappih += arg->i;
+  selmon->gappiv += arg->i;
+  selmon->gappoh += arg->i;
+  selmon->gappov += arg->i;
+  arrange(selmon);
+}
+
+void
+decgap(const Arg *arg)
+{
+  selmon->gappih = selmon->gappih - arg->i < 0 ? 0 : selmon->gappih - arg->i;
+  selmon->gappiv = selmon->gappiv - arg->i < 0 ? 0 : selmon->gappiv - arg->i;
+  selmon->gappoh = selmon->gappoh - arg->i < 0 ? 0 : selmon->gappoh - arg->i;
+  selmon->gappov = selmon->gappov - arg->i < 0 ? 0 : selmon->gappov - arg->i;
+  arrange(selmon);
 }
 
 void
